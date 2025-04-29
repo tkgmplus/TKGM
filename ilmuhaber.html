@@ -1,0 +1,123 @@
+﻿<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Modül Yapım Çalışmaları Sürüyor</title>
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            background-color: #e0e0e0;
+            color: #333;
+            margin: 0;
+            overflow: hidden;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            perspective: 1000px; /* 3D efekt perspektifi */
+        }
+        .container {
+            text-align: center;
+            padding: 30px;
+            background-color: #ffffff;
+            border-radius: 15px;
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.3);
+            transition: transform 0.3s ease-in-out;
+        }
+        .container:hover {
+            transform: rotateY(0deg) rotateX(0deg); /* Hover ile düz duruma geçiş */
+        }
+        h1 {
+            font-size: 2.5rem;
+            color: #2c3e50;
+            text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.2); /* 3D etkisi için gölge */
+        }
+        p {
+            font-size: 1.2rem;
+            color: #7f8c8d;
+            margin-top: 10px;
+            text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.1);
+        }
+        .icon {
+            font-size: 4rem;
+            color: #f39c12;
+            margin-bottom: 20px;
+            text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.2); /* İkon için 3D etkisi */
+        }
+        .line {
+            width: 120px;
+            height: 5px;
+            background-color: #f39c12;
+            margin: 20px auto;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2); /* Çizgiye derinlik */
+        }
+        .snowflake {
+            position: absolute;
+            top: -10px; /* Yukarıdan başlama */
+            font-size: 1rem;
+            color: rgba(255, 255, 255, 0.8); /* Hafif saydam beyaz */
+            pointer-events: none;
+            animation: fall linear infinite; /* Sadece düşüş animasyonu */
+        }
+
+        @keyframes fall {
+            to {
+                transform: translateY(100vh); /* Dikey düşüş */
+            }
+        }
+
+        .back-button {
+            margin-top: 20px;
+            padding: 10px 20px;
+            font-size: 1rem;
+            color: white;
+            background-color: #3498db; /* Buton rengi */
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+
+        .back-button:hover {
+            background-color: #2980b9; /* Hover durumu */
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="icon">⚙️</div>
+        <h1>Modül Yapım Çalışmaları Sürüyor</h1>
+        <div class="line"></div>
+        <p>Şu anda modül geliştirme aşamasındayız. Çok yakında buradayız, lütfen sabırlı olun!</p>
+        <button class="back-button" onclick="window.location.href='../index.php'">Ana Sayfaya Dön</button> <!-- Ana sayfaya dön butonu -->
+    </div>
+
+    <!-- Kar taneleri -->
+    <script>
+        const createSnowflake = () => {
+            const snowflake = document.createElement('div');
+            snowflake.classList.add('snowflake');
+            snowflake.innerHTML = '❄️';
+
+            // Kar tanesinin stil özelliklerini rastgele yap
+            snowflake.style.left = Math.random() * window.innerWidth + 'px'; // Rastgele başlangıç pozisyonu
+            snowflake.style.animationDuration = Math.random() * 8 + 8 + 's'; // Rastgele düşüş süresi (8-16 saniye)
+            snowflake.style.fontSize = Math.random() * 10 + 10 + 'px'; // Rastgele boyut (10-20px)
+            snowflake.style.opacity = Math.random() * 0.5 + 0.5; // Yarı saydamlık (0.5-1)
+
+            document.body.appendChild(snowflake);
+
+            // Kar tanesini 10 saniye sonra sil
+            setTimeout(() => {
+                snowflake.remove();
+            }, 16000); // Düşüş süresi bitmeden önce kaldır
+        };
+
+        // Her 200 milisaniyede bir kar tanesi oluştur
+        setInterval(createSnowflake, 200);
+    </script>
+
+</body>
+</html>
